@@ -1,0 +1,764 @@
+backend:
+  name: git-gateway
+  accept_roles:
+    - admin
+    - editor
+media_folder: theme/assets/images
+public_folder: /assets/images
+collections:
+  - name: pages
+    label: Pages
+    identifier_field: title
+    extension: md
+    create: false
+    delete: false
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    folder: cms/pages
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '{{slug}}.html'
+      - &ref_0
+        label: Seo
+        name: seo
+        widget: object
+        collapsed: true
+        fields:
+          - label: Title
+            name: title
+            widget: string
+            required: false
+          - label: Description
+            name: description
+            widget: string
+            required: false
+          - label: No index
+            name: noindex
+            widget: boolean
+            default: false
+            required: false
+          - label: Open Graph Title
+            name: og:title
+            widget: string
+            required: false
+          - label: Open Graph Image
+            name: og:image
+            widget: image
+            required: false
+            media_library:
+              config:
+                multiple: false
+          - label: Twitter Title
+            name: twitter:title
+            widget: string
+            default: summary
+            required: false
+          - label: Twitter Card
+            name: twitter:card
+            widget: string
+            default: summary
+            required: false
+          - label: Twitter Site
+            name: twitter:site
+            widget: string
+            required: false
+          - label: Twitter Creator
+            name: twitter:creator
+            widget: string
+            required: false
+          - label: Additional HTML tags
+            name: additional_tags
+            widget: text
+            required: false
+  - name: footer_boxes
+    label: Footer-Boxes
+    folder: cms/footer-boxes
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - label: Text
+        name: body
+        widget: markdown
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: footer-boxes
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[footer-boxes].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: page
+    label: Pages
+    folder: cms/page
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - label: Großer Text
+        name: body
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_header-bild
+        label: Header Bild
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_benachrichtung
+        label: Benachrichtung
+        widget: string
+        required: false
+      - hint: ''
+        name: f_slider-bilder
+        label: Slider Bilder
+        widget: list
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_medien-anzeigen
+        label: Medien anzeigen
+        widget: boolean
+        required: false
+      - hint: ''
+        name: f_bild-in-voller-breite-z-b-getrankekarte
+        label: Bild in voller breite (z.B. Getränkekarte)
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_kontakt-formular-anyeigen
+        label: Kontakt-Formular anzeigen
+        widget: boolean
+        required: false
+      - hint: ''
+        name: f_reihenfolge-im-menu
+        label: Reihenfolge im Menü
+        widget: number
+        required: false
+      - hint: ''
+        name: f_im-footer-anzeigen
+        label: Im Footer anzeigen
+        widget: boolean
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: page
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[page].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: posts
+    label: Posts
+    folder: cms/posts
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - label: Text
+        name: body
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_bild
+        label: Bild
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_button-text
+        label: Button-Text
+        widget: string
+        required: false
+      - hint: ''
+        name: f_button-link
+        label: Button-Link
+        widget: string
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: posts
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[posts].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - label: Theme Settings
+    name: settings
+    identifier_field: title
+    extension: json
+    create: false
+    delete: false
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    files:
+      - label: General
+        name: site
+        file: cms/_data/settings/site.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: General
+          - hint: Full domain url (needed for a correct sitemap file)
+            name: domain
+            label: Domain
+            widget: string
+            required: false
+          - name: favicon
+            label: Favicon
+            widget: image
+            allow_multiple: false
+            required: false
+          - name: apple_touch_icon
+            label: Apple Touch Icon
+            widget: image
+            allow_multiple: false
+            required: false
+          - name: header_additional_content
+            label: Additional Content Header
+            hint: Content here will be placed before </head> tag
+            widget: text
+            required: false
+          - name: footer_additional_content
+            label: Additional Content Footer
+            hint: Content here will be placed before </body> tag
+            widget: text
+            required: false
+          - name: images_optimization
+            label: Images Optimization
+            widget: object
+            collapsed: false
+            fields:
+              - label: Image Formats
+                name: formats
+                widget: select
+                multiple: true
+                options:
+                  - label: Avif
+                    value: avif
+                  - label: Webp
+                    value: webp
+              - label: Image Dimensions
+                name: dimensions
+                widget: select
+                multiple: true
+                options:
+                  - label: '500'
+                    value: 500
+                  - label: '800'
+                    value: 800
+                  - label: '1080'
+                    value: 1080
+                  - label: '1600'
+                    value: 1600
+                  - label: '2000'
+                    value: 2000
+                  - label: '2600'
+                    value: 2600
+      - label: Colors
+        name: colors
+        file: cms/_data/colors.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Colors
+      - label: Texts
+        name: texts
+        file: cms/_data/texts.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Texts
+          - hint: >-
+              Original text: Oranienstr. 163, 10969 Berlin-Kreuzberg, key:
+              12e06354
+            label: Text
+            name: '12e06354'
+            widget: string
+          - hint: |-
+              Original text: ‍
+                            , key: -4b4e9923
+            label: Text
+            name: '-4b4e9923'
+            widget: string
+          - hint: "Original text: Tel.:030\_-\_70\_71\_50\_42, key: 1d0f0257"
+            label: Text
+            name: 1d0f0257
+            widget: string
+          - hint: "Original text: von\_17:00 bis\_03:00 Uhr\_geöffnet., key: -6ad34c6c"
+            label: Text
+            name: '-6ad34c6c'
+            widget: string
+          - hint: 'Original text: No items found., key: 3d503d2b'
+            label: Text
+            name: 3d503d2b
+            widget: string
+          - hint: "Original text: Deine Bierkneipe auf\_dem Kiez!, key: -a136aa3"
+            label: Text
+            name: '-a136aa3'
+            widget: string
+          - hint: "Original text: Wir freuen uns immer auf nette\_Gäste! , key: e3ed57b"
+            label: Text
+            name: e3ed57b
+            widget: string
+          - hint: >-
+              Original text: Wenn Ihr aber zum Trinken kommt, um zu vergessen,
+              bezahlt bitte vorher!, key: -5cf80fc4
+            label: Text
+            name: '-5cf80fc4'
+            widget: string
+          - hint: 'Original text: offen unsere Speisekarte, key: 45cd4700'
+            label: Text
+            name: 45cd4700
+            widget: string
+          - hint: 'Original text: Alle medien anzeigen, key: 6442ce9d'
+            label: Text
+            name: 6442ce9d
+            widget: string
+          - hint: >-
+              Original text: Oranienstr. 163 | 10969 Berlin-Kreuzberg, key:
+              -560d4a56
+            label: Text
+            name: '-560d4a56'
+            widget: string
+          - hint: "Original text: Bierkneipe Schmitz\_Katze, key: 4352c813"
+            label: Text
+            name: 4352c813
+            widget: string
+          - hint: 'Original text: Seite nicht gefunden, key: -6aeac3b0'
+            label: Text
+            name: '-6aeac3b0'
+            widget: string
+          - hint: >-
+              Original text: Die gesuchte Seite existiert nicht oder wurde
+              verschoben, key: 4dc15f01
+            label: Text
+            name: 4dc15f01
+            widget: string
+          - hint: 'Original text: ‍, key: 200d'
+            label: Text
+            name: 200d
+            widget: string
+          - hint: 'Original text: zur Startseite, key: -36995ed1'
+            label: Text
+            name: '-36995ed1'
+            widget: string
+          - hint: 'Original text: Previous, key: -4811e0e9'
+            label: Text
+            name: '-4811e0e9'
+            widget: string
+          - hint: 'Original text: Next, key: 24ff13'
+            label: Text
+            name: 24ff13
+            widget: string
+          - hint: 'Original text: Schreib uns!, key: -512d257d'
+            label: Text
+            name: '-512d257d'
+            widget: string
+          - hint: 'Original text: Du schreibst an , key: -3ee69237'
+            label: Text
+            name: '-3ee69237'
+            widget: string
+          - hint: 'Original text: schmitz.katze@t-online.de, key: -59218408'
+            label: Text
+            name: '-59218408'
+            widget: string
+          - hint: 'Original text: Name, key: 24eeab'
+            label: Text
+            name: 24eeab
+            widget: string
+          - hint: 'Original text: *, key: 2a'
+            label: Text
+            name: 2a
+            widget: string
+          - hint: 'Original text: E-mail-Adresse, key: -5fc278ff'
+            label: Text
+            name: '-5fc278ff'
+            widget: string
+          - hint: 'Original text: Thema, key: 4d085a5'
+            label: Text
+            name: 4d085a5
+            widget: string
+          - hint: 'Original text: Nachricht, key: -49db8f60'
+            label: Text
+            name: '-49db8f60'
+            widget: string
+          - hint: >-
+              Original text: Danke schön! Ihre Einsendung ist eingegangen!, key:
+              -522e9f1d
+            label: Text
+            name: '-522e9f1d'
+            widget: string
+          - hint: >-
+              Original text: Oops! Something went wrong while submitting the
+              form., key: -7c112e99
+            label: Text
+            name: '-7c112e99'
+            widget: string
+      - label: Links
+        name: links
+        file: cms/_data/links.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Links
+          - hint: 'Original link: #, key: 23'
+            label: Link
+            name: '23'
+            widget: string
+          - hint: 'Original link: /, key: 2f'
+            label: Link
+            name: 2f
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.google.com/maps/place/Schmitz+Katze/@52.5024992,13.4119287,17z/data=!3m2!4b1!5s0x47a84e32729fb783:0xa07d3be50504bf21!4m5!3m4!1s0x47a84e327282b1b9:0x9565c7e114e3305b!8m2!3d52.5024992!4d13.4141174,
+              key: -4dcb013e
+            label: Link
+            name: '-4dcb013e'
+            widget: string
+          - hint: 'Original link: tel:+493070715042, key: 7c01147a'
+            label: Link
+            name: 7c01147a
+            widget: string
+          - hint: >-
+              Original link: https://www.facebook.com/SchmitzKatze36/?ref=py_c,
+              key: -649c6b7
+            label: Link
+            name: '-649c6b7'
+            widget: string
+          - hint: >-
+              Original link: https://www.instagram.com/schmitzkatze36/, key:
+              -3fc97c93
+            label: Link
+            name: '-3fc97c93'
+            widget: string
+          - hint: 'Original link: mailto:schmitz.katze@t-online.de, key: -57c13710'
+            label: Link
+            name: '-57c13710'
+            widget: string
+          - hint: 'Original link: /assets/null/medien., key: 35e4d55d'
+            label: Link
+            name: 35e4d55d
+            widget: string
+          - hint: >-
+              Original link:
+              mailto:schmitz.katze@t-online.de?subject=Schmitz%20Katze%20Kontaktformular,
+              key: -2183e657
+            label: Link
+            name: '-2183e657'
+            widget: string
+      - label: Images
+        name: images
+        file: cms/_data/images.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Images
+          - label: Image
+            name: i4a3af232
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-4d2731e8'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-20a34d0b'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 7f1da112
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-4a3fc8ad'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-3e59428a'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 7dfdf969
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 5384aeef
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 5285c894
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-441ea664'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-3fb0efcd'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-5dc287cd'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-2b1beb3c'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+publish_mode: editorial_workflow

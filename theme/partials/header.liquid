@@ -1,0 +1,36 @@
+<header class="header">
+      <div class="section section--menu">
+        <a scroll="disable" data-w-id="387ff7e2-f160-51a2-a945-4a826dcb9eb4" href="{{ links.23 }}" class="icon-button burger w-inline-block"><img src="{{ images.-4d2731e8.url }}" loading="lazy" alt="{{ images.-4d2731e8.alt }}"></a>
+        <nav class="container container--nav">
+          <a id="w-node-_387ff7e2-f160-51a2-a945-4a826dcb9eb7-6dcb9eb2" href="{{ links.2f }}" aria-current="page" class="brand w-inline-block w--current"><img src="{{ images.-20a34d0b.url }}" loading="lazy" data-sizes="[{&quot;max&quot;:767,&quot;size&quot;:&quot;56px&quot;},{&quot;max&quot;:991,&quot;size&quot;:&quot;64px&quot;},{&quot;max&quot;:10000,&quot;size&quot;:&quot;96px&quot;}]" alt="{{ images.-20a34d0b.alt }}" class="brand-img"></a>
+          <div id="w-node-_387ff7e2-f160-51a2-a945-4a826dcb9eb9-6dcb9eb2" class="menu-w">
+            <address class="container container--contacts">
+              <div class="contakt-bar-text">
+                <a href="{{ links.-4dcb013e }}" target="_blank" class="text-grey">{{ texts.12e06354 }}</a>{{ texts.-4b4e9923 }}</div>
+              <div class="contakt-bar-text">
+                <a href="{{ links.7c01147a }}" class="text-grey">{{ texts.1d0f0257 }}</a>
+              </div>
+              <div class="contakt-bar-text">{{ texts.-6ad34c6c }}</div>
+            </address>
+            <div class="menu-items-w">
+              {%- assign collection = collections.page | filter: "f_im-footer-anzeigen,ne,true", "ALL", page.inputPath | sort: "f_reihenfolge-im-menu, created-on" -%}<div id="w-node-b4967ce0-264a-eb0e-7329-5df5182a1a09-6dcb9eb2" class="w-dyn-list">
+                {%- unless collection.length == 0 -%}<div role="list" class="menu-items w-dyn-items">
+                  {%- for item in collection -%}<div role="listitem" class="w-dyn-item">
+                    <a href="{{ item.url }}" class="button button-nav w-button">{{ item.data.title }}</a>
+                  </div>{%- endfor -%}
+                </div>{%- endunless -%}
+                {%- if collection.length == 0 -%}<div class="w-dyn-empty">
+                  <div>{{ texts.3d503d2b }}</div>
+                </div>{%- endif -%}
+              </div>
+              <div class="social">
+                <a href="{{ links.-649c6b7 }}" target="_blank" class="icon-button w-inline-block"><img src="{{ images.7f1da112.url }}" loading="lazy" alt="{{ images.7f1da112.alt }}"></a>
+                <a href="{{ links.-3fc97c93 }}" target="_blank" class="icon-button w-inline-block"><img src="{{ images.-4a3fc8ad.url }}" loading="lazy" alt="{{ images.-4a3fc8ad.alt }}"></a>
+                <a href="{{ links.-57c13710 }}" class="icon-button w-inline-block"><img src="{{ images.-3e59428a.url }}" loading="lazy" alt="{{ images.-3e59428a.alt }}"></a>
+              </div>
+            </div>
+            <a scroll="enable" data-w-id="387ff7e2-f160-51a2-a945-4a826dcb9ecf" href="{{ links.23 }}" class="icon-button burger close w-inline-block"><img src="{{ images.7dfdf969.url }}" loading="lazy" alt="{{ images.7dfdf969.alt }}"></a>
+          </div>
+        </nav>
+      </div>
+    </header>

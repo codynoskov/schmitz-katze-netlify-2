@@ -1,0 +1,22 @@
+<footer class="footer">
+      <div class="container container--footer"><img src="{{ images.-3fb0efcd.url }}" loading="lazy" data-sizes="[{&quot;max&quot;:479,&quot;size&quot;:&quot;47vw&quot;},{&quot;max&quot;:767,&quot;size&quot;:&quot;22vw&quot;},{&quot;max&quot;:10000,&quot;size&quot;:&quot;200.40625px&quot;}]" alt="{{ images.-3fb0efcd.alt }}" class="maus-1"><img src="{{ images.-5dc287cd.url }}" loading="lazy" data-sizes="[{&quot;max&quot;:479,&quot;size&quot;:&quot;46vw&quot;},{&quot;max&quot;:767,&quot;size&quot;:&quot;21vw&quot;},{&quot;max&quot;:10000,&quot;size&quot;:&quot;194.25px&quot;}]" alt="{{ images.-5dc287cd.alt }}" class="maus-2">
+        <div class="grid">
+          <h3>{{ texts.4352c813 }}</h3>
+          <div class="social">
+            <a href="{{ links.-649c6b7 }}" target="_blank" class="icon-button w-inline-block"><img src="{{ images.7f1da112.url }}" loading="lazy" alt="{{ images.7f1da112.alt }}"></a>
+            <a href="{{ links.-3fc97c93 }}" target="_blank" class="icon-button w-inline-block"><img src="{{ images.-4a3fc8ad.url }}" loading="lazy" alt="{{ images.-4a3fc8ad.alt }}"></a>
+            <a href="{{ links.-57c13710 }}" class="icon-button w-inline-block"><img src="{{ images.-3e59428a.url }}" loading="lazy" alt="{{ images.-3e59428a.alt }}"></a>
+          </div>
+          {%- assign collection = collections.page | filter: "f_im-footer-anzeigen,eq,true", "ALL", page.inputPath | sort: "f_reihenfolge-im-menu, created-on" -%}<div class="w-dyn-list">
+            {%- unless collection.length == 0 -%}<div role="list" class="footer-links w-dyn-items">
+              {%- for item in collection -%}<div role="listitem" class="w-dyn-item">
+                <a href="{{ item.url }}" class="footer-link">{{ item.data.title }}</a>
+              </div>{%- endfor -%}
+            </div>{%- endunless -%}
+            {%- if collection.length == 0 -%}<div class="w-dyn-empty">
+              <div>{{ texts.3d503d2b }}</div>
+            </div>{%- endif -%}
+          </div>
+        </div>
+      </div>
+    </footer>
